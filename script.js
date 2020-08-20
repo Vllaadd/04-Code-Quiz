@@ -9,16 +9,22 @@ function emptyElements(){
     $('#answers').empty();
 }
 
-function startTimer(){
-    var x = setInterval(function(){
-        timeLeft=10;
-        timeLeft--;
-        if(timeLeft == 0){
-            stopQuiz(x);
-        }
-        $('#countdown').append(timeLeft);
-    }, 1000)
-}
+secondsCount = 0;
+secondsLeft = 60;
+
+function startTimer() {
+    if (secondsCount === 0) {
+        secondsCount = setInterval(function () {
+            secondsLeft--;
+            countdown.textContent = secondsLeft;
+
+            if (secondsLeft <= 0) {
+                clearInterval(secondsCount);
+                countdown.textContent = "Time's up!";
+            }
+        }, 1000);
+    }
+};
 
 function stopQuiz(x){
     clearInterval(x);
