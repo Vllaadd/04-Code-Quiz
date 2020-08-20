@@ -56,8 +56,6 @@ function emptyElements() {
 }
 
 function showQuestionAndAnswers() {
-	// questions.forEach(question => console.log(question));
-
 	var question = questions[questionStep];
 	$('#question').append(question.name);
 	var htmlContent = "<ul>";
