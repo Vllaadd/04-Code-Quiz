@@ -1,7 +1,7 @@
 function startQuiz(){
     emptyElements();
     startTimer();
-    showQuestionsAndAnswers;
+    showQuestionAndAnswers();
 }
 
 function emptyElements(){
@@ -26,24 +26,69 @@ function startTimer() {
     }
 };
 
-function stopQuiz(x){
-    clearInterval(x);
+
+function answerQuestion(idQuestion) {
+	updateScore(idQuestion);
+
+	emptyElements();
+
+	if (!checkQuizIsFinished()) {
+		switchToNextQuestionStep();
+		showQuestionAndAnswers();
+	} else {
+		showHighScore();
+	}
 }
 
 
+function checkQuizIsFinished() {
+	nextStep = questionStep + 1;
+	if (nextStep < questions.length) {		
+		return false;
+	}
 
+	return true;
+}
 
+function emptyElements() {
+	$('#question').empty();
+	$('#answers').empty();
+}
 
+function showQuestionAndAnswers() {
+	// questions.forEach(question => console.log(question));
 
-// GIVEN I am taking a code quiz
-// WHEN I click the start button
-// THEN a timer starts and I am presented with a question
+	var question = questions[questionStep];
+	$('#question').append(question.name);
+	var htmlContent = "<ul>";
 
-// WHEN I answer a question
-// THEN I am presented with another question
-// WHEN I answer a question incorrectly
-// THEN time is subtracted from the clock
-// WHEN all questions are answered or the timer reaches 0
-// THEN the game is over
-// WHEN the game is over
-// THEN I can save my initials and score
+	for (var i = 0; i < question.answers.length; i++) {
+		var answer = question.answers[i];
+		htmlContent += "<li><button onclick=answerQuestion("+answer.id+")>"+answer.name+"</button></li>";
+	}
+	
+	htmlContent += "</ul>";
+
+	$('#answers').append(htmlContent);
+}
+
+function switchToNextQuestionStep() {
+	questionStep++;
+}
+
+function showHighScore(argument) {
+	$('#answers').append(score);
+}
+
+function updateScore(idQuestion) {
+	var question = questions[questionStep];
+
+	if (question.rightAnswer == idQuestion) {		
+		score += 1;
+	} else {
+		score -= 0.5;
+    } 
+    var currentScore = document.getElementById('score-track');
+    currentScore.innerHTML = 'Your score' + score;
+}
+
