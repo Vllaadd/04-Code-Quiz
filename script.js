@@ -64,7 +64,7 @@ function showQuestionAndAnswers() {
 
 	for (var i = 0; i < question.answers.length; i++) {
 		var answer = question.answers[i];
-		htmlContent += "<li><button onclick=answerQuestion("+answer.id+")>"+answer.name+"</button></li>";
+		htmlContent += "<li><button class=\"btn btn-primary\" onclick=answerQuestion("+answer.id+")>"+answer.name+"</button></li>";
 	}
 	
 	htmlContent += "</ul>";
@@ -74,10 +74,6 @@ function showQuestionAndAnswers() {
 
 function switchToNextQuestionStep() {
 	questionStep++;
-}
-
-function showHighScore(argument) {
-	$('#answers').append(score);
 }
 
 function updateScore(idQuestion) {
@@ -91,4 +87,3 @@ function updateScore(idQuestion) {
     var currentScore = document.getElementById('score-track');
     currentScore.innerHTML = 'Your score' + score;
 }
-

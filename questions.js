@@ -4,7 +4,7 @@ var quizDuration = 60;
 
 var questions = [
 	{
-	    name:"Commonly used types DO NOT include?",
+	    name:"Commonly used types DO NOT include:",
 	    answers:[
 		    	{ 
 		    		id: 123, 
