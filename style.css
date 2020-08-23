@@ -1,11 +1,11 @@
 *{ box-sizing: border-box; }
 
-#header {
+.header {
 	width: 100%;
 	min-height: 50px;
 }
 
-#container {
+.container {
 	width: 50%;
 	min-height: 550px;
 	margin: 100px auto;
