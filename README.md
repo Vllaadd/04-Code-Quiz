@@ -10,6 +10,6 @@ All you need to do is click the button and answer questions. Once the button is 
 
 The following animation demonstrates the application functionality:
 
-![code quiz](./Assets/04-web-apis-homework-demo.gif)
+![code quiz](./sample-video/Code%20Quiz.gif)
 
 
